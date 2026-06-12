@@ -868,15 +868,11 @@
         // 1. Navbar
         // ============================================
         const PAGE_ROUTES = [
-            { key: 'chat', label: '模拟推荐', hash: '#chat' },
-            { key: 'universities', label: '高校目录', hash: '#universities' },
-            { key: 'sync', label: '方案同步', hash: '#sync' },
-            { key: 'data', label: '职业薪资', hash: '#data' },
+            { key: 'chat', label: '智能推荐', hash: '#chat' },
         ];
 
         const getRouteFromHash = () => {
             const hash = window.location.hash || '#chat';
-            if (hash === '#comparison' || hash === '#compare') return 'sync';
             const route = PAGE_ROUTES.find(item => item.hash === hash);
             return route ? route.key : 'chat';
         };
@@ -6291,9 +6287,6 @@
             };
 
             const renderActivePage = () => {
-                if (activePage === 'universities') return <UniversitiesSection />;
-                if (activePage === 'sync') return <ComparisonSection userProfile={userProfile} />;
-                if (activePage === 'data') return <DataAnalysisSection />;
                 return (
                     <ChatSection
                         userProfile={userProfile}

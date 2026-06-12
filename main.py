@@ -51,9 +51,6 @@ app.add_middleware(
 
 # Routers
 app.include_router(consult.router, prefix="/api")
-app.include_router(evaluate.router, prefix="/api")
-app.include_router(data.router, prefix="/api")
-app.include_router(agent.router, prefix="/api")
 app.include_router(sessions.router, prefix="/api")
 app.include_router(llm.router, prefix="/api")
 
@@ -82,11 +79,6 @@ async def root():
         "docs": "/docs" if settings.debug else None,
         "endpoints": {
             "consult": "POST /api/consult (支持 session_id 多轮对话)",
-            "evaluate": "POST /api/evaluate",
-            "soul_questions": "POST /api/evaluate/soul-questions",
-            "quote": "GET /api/data/quote",
-            "majors": "GET /api/data/majors",
-            "schools": "GET /api/data/schools",
             "sessions": {
                 "create": "POST /api/sessions",
                 "list": "GET /api/sessions",
@@ -97,13 +89,6 @@ async def root():
             },
             "llm": {
                 "test": "POST /api/llm/test (测试用户填写的 OpenAI Chat 兼容配置)",
-            },
-            "agent": {
-                "recommend": "POST /api/agent/recommend",
-                "compare": "POST /api/agent/compare",
-                "insights": "POST /api/agent/insights",
-                "pressure_test": "POST /api/agent/pressure-test",
-                "analyze": "POST /api/agent/analyze",
             },
         },
     }
